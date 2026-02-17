@@ -1,6 +1,10 @@
-import { Link2, Pencil, Trash2 } from "lucide-react";
+"use client";
+import { Book, Link2, Pencil, Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import CustomModal from "./customModal";
+import DeleteConfirmationModal from "./deleteConfirmationModal";
+import { useState } from "react";
 
 const links = [
   {
@@ -22,62 +26,102 @@ const links = [
 ];
 
 const BookMarks = () => {
+  const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+
+  const confirmDelete = () => {
+    console.log("Deleted folder:");
+  };
+
+  const handleEditSubmit = (data: { title: string }) => {
+    console.log("Folder updated:", data.title);
+  };
   return (
-    <div className="space-y-3">
-      {links.map((link) => {
-        const domain = new URL(link.url).hostname;
+    <>
+      <div className="space-y-3">
+        {links.map((link) => {
+          const domain = new URL(link.url).hostname;
 
-        return (
-          <div
-            key={link.title}
-            className="group flex items-center justify-between rounded-lg px-4 py-3 hover:bg-secondary transition hover:cursor-pointer"
-          >
-            {/* Left content */}
-            <div className="flex items-center gap-3 text-sm">
-              <Image
-                width={20}
-                height={20}
-                src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
-                alt={domain}
-                className="h-5 w-5 rounded"
-              />
+          return (
+            <div
+              key={link.title}
+              className="group flex items-center justify-between rounded-lg px-4 py-3 hover:bg-secondary transition hover:cursor-pointer"
+            >
+              {/* Left content */}
+              <div className="flex items-center gap-3 text-sm">
+                <Image
+                  width={20}
+                  height={20}
+                  src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
+                  alt={domain}
+                  className="h-5 w-5 rounded"
+                />
 
-              <Link2 className="h-4 w-4 text-primary" />
+                <Link2 className="h-4 w-4 text-primary" />
 
-              <div className="flex flex-col">
-                <span className="text-text font-medium truncate max-w-[220px]">
-                  {link.title}
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-text font-medium truncate max-w-[220px]">
+                    {link.title}
+                  </span>
 
-                <Link
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-primary hover:underline truncate max-w-[220px]"
+                  <Link
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-primary hover:underline truncate max-w-[220px]"
+                  >
+                    {link.url}
+                  </Link>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                <button
+                  className="p-2 rounded-lg hover:bg-secondary transition"
+                  title="Edit"
                 >
-                  {link.url}
-                </Link>
+                  <Pencil
+                    className="h-4 w-4 text-primary"
+                    onClick={() => {
+                      setEditOpen(true);
+                    }}
+                  />
+                </button>
+
+                <button
+                  className="p-2 rounded-lg hover:bg-red-500/10 transition"
+                  title="Delete"
+                  onClick={() => {
+                    setDeleteOpen(true);
+                  }}
+                >
+                  <Trash2 className="h-4 w-4 text-red-500" />
+                </button>
               </div>
             </div>
-            <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition">
-              <button
-                className="p-2 rounded-lg hover:bg-secondary transition"
-                title="Edit"
-              >
-                <Pencil className="h-4 w-4 text-primary" />
-              </button>
+          );
+        })}
+      </div>
+      {editOpen && (
+        <CustomModal
+          open={editOpen}
+          onClose={() => setEditOpen(false)}
+          title="Edit Bookmark"
+          icon={Book}
+          mode="bookmark"
+          isEdit
+          defaultTitle={"Smilebox"}
+          onSubmit={handleEditSubmit}
+        />
+      )}
 
-              <button
-                className="p-2 rounded-lg hover:bg-red-500/10 transition"
-                title="Delete"
-              >
-                <Trash2 className="h-4 w-4 text-red-500" />
-              </button>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+      {deleteOpen && (
+        <DeleteConfirmationModal
+          open={deleteOpen}
+          onClose={() => setDeleteOpen(false)}
+          onConfirm={confirmDelete}
+        />
+      )}
+    </>
   );
 };
 

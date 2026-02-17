@@ -18,8 +18,8 @@ const BookMark = () => {
           </p>
         </div>
         <div className="mb-10 flex flex-col md:flex-row w-full items-center gap-4">
-          <CustomButton title="Create Folder" icon={Folder} />
-          <CustomButton title="Create Bookmark" icon={Book} />
+          <CustomButton title="Create Folder" icon={Folder} mode="folder" />
+          <CustomButton title="Create Bookmark" icon={Book} mode="bookmark" />
           <SearchBar />
         </div>
 
