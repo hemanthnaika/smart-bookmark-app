@@ -4,7 +4,7 @@ import Features from "@/components/features";
 import { redirect } from "next/navigation";
 
 const Home = () => {
-  const isAuth = true;
+  const isAuth = false;
   if (isAuth) {
     redirect("/bookmark");
   }

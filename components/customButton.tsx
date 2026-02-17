@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { LucideIcon } from "lucide-react";
+import { Book, Folder, LucideIcon } from "lucide-react";
 import CustomModal from "./customModal";
 
 interface CustomButtonProps {
   title: string;
-  icon: LucideIcon;
+
   mode: "folder" | "bookmark";
 }
 
-const CustomButton = ({ title, icon: Icon, mode }: CustomButtonProps) => {
+const CustomButton = ({ title, mode }: CustomButtonProps) => {
   const [open, setOpen] = useState(false);
   const [folderName, setFolderName] = useState("");
   const [bookmarkTitle, setBookmarkTitle] = useState("");
@@ -27,7 +27,7 @@ const CustomButton = ({ title, icon: Icon, mode }: CustomButtonProps) => {
     setBookmarkTitle("");
     setBookmarkURL("");
   };
-
+  const Icon = mode === "folder" ? Folder : Book;
   return (
     <>
       <button
