@@ -12,6 +12,13 @@ html,body {
   --color-primary: #0075eb;
   --color-secondary: #e9f4ff;
   --color-gray: #cbd5e1;
+
+
+   --color-background: #f9fafb;
+  --color-card: #ffffff;
+  --color-text: #111827;
+  --color-muted: #4b5563;
+  --color-border: #e5e7eb;
  
 }
 
@@ -23,31 +30,9 @@ html,body {
 
 
 
-:root {
-  --color-background: #f9fafb;
-  --color-card: #ffffff;
-  --color-text: #111827;
-  --color-muted: #4b5563;
-  --color-border: #e5e7eb;
-}
 
 
-.dark {
-  --color-background: #0f172a;
-  --color-card: #020617;
-  --color-text: #f8fafc;
-  --color-muted: #94a3b8;
-  --color-border: #1e293b;
-}
 
-
-@theme inline {
-  --color-background: var(--color-background);
-  --color-card: var(--color-card);
-  --color-text: var(--color-text);
-  --color-muted: var(--color-muted);
-  --color-border: var(--color-border);
-}
 
 
 @layer base {
