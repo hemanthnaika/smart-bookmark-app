@@ -1,33 +1,64 @@
 @import "tailwindcss";
 
+
+
+
+@theme {
+ 
+  --font-inter: 'Inter', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --color-primary: #0075eb;
+  --color-secondary: #e9f4ff;
+  --color-gray: #cbd5e1;
+ 
+}
+
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+
 :root {
-  --color-background: #F9FAFB;
-  --color-card: #FFFFFF;
+  --color-background: #f9fafb;
+  --color-card: #ffffff;
   --color-text: #111827;
-  --color-muted: #4B5563;
-  --color-border: #E5E7EB;
-  --color-primary: #4F46E5;
+  --color-muted: #4b5563;
+  --color-border: #e5e7eb;
 }
 
 
 .dark {
-  --color-background: #111827;
-  --color-card: #1F2937;
-  --color-text: #F9FAFB;
-  --color-muted: #9CA3AF;
-  --color-border: #374151;
-  --color-primary: #818CF8;
+  --color-background: #0f172a;
+  --color-card: #020617;
+  --color-text: #f8fafc;
+  --color-muted: #94a3b8;
+  --color-border: #1e293b;
 }
+
+
+@theme inline {
+  --color-background: var(--color-background);
+  --color-card: var(--color-card);
+  --color-text: var(--color-text);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+}
+
 
 @layer base {
-    body {
+  body {
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-inter);
   }
-}
-
-@theme{
-  --font-inter: 'Inter', sans-serif;
-  --font-poppins: 'Poppins', sans-serif;
 }
