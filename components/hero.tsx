@@ -1,5 +1,6 @@
 import { ChevronRight, MoveRight } from "lucide-react";
 import LoginButton from "./loginButton";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -7,7 +8,7 @@ const Hero = () => {
       <div className="flex items-center gap-2 border border-slate-300 hover:border-slate-400/70 rounded-full w-max mx-auto px-4 py-2 ">
         <span>Save and organize links effortlessly</span>
         <button className="flex items-center gap-1 font-medium">
-          <span>See how it works</span>
+          <a href={"#features"}>See how it works</a>
           <MoveRight className="w-5 h-5" />
         </button>
       </div>
@@ -25,7 +26,7 @@ const Hero = () => {
         <LoginButton title="Start Saving Links" />
 
         <button className="flex items-center gap-2 border border-slate-300 hover:bg-slate-200/30 rounded-full px-6 py-3">
-          <span>Learn More</span>
+          <a href={"#features"}>Learn More</a>
           <ChevronRight />
         </button>
       </div>
