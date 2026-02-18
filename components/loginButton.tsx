@@ -73,7 +73,7 @@ const LoginButton = ({ title }: LoginButtonProps) => {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `http://localhost:3000/bookmark`,
+        redirectTo: `https://smart-bookmark-app-hemanth.vercel.app/bookmark`,
       },
     });
   };
