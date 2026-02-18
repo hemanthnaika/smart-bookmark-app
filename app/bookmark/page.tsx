@@ -1,16 +1,13 @@
+
 import BookMarks from "@/components/bookMarks";
 import CustomButton from "@/components/customButton";
 import CustomLayout from "@/components/customLayout";
 import Folders from "@/components/folders";
-import SearchBar from "@/components/searchBar";
 import { Folder, Book } from "lucide-react";
-import { redirect } from "next/navigation";
+
 
 const BookMark = () => {
-  const isAuth = false;
-  if (isAuth) {
-    redirect("/");
-  }
+  
   return (
     <div className="min-h-screen bg-background p-6 pt-20">
       <CustomLayout>
@@ -23,7 +20,6 @@ const BookMark = () => {
         <div className="mb-10 flex flex-col md:flex-row w-full items-center gap-4">
           <CustomButton title="Create Folder" mode="folder" />
           <CustomButton title="Create Bookmark" mode="bookmark" />
-          <SearchBar />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
